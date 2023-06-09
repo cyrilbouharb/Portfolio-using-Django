@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+    {% load static %}
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
@@ -7,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
-    <title>Album example · Bootstrap v5.3</title>
+    <title>Cyril's First Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
@@ -155,15 +156,15 @@
 <header data-bs-theme="dark">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Cyril Bou-Harb</a>
+          <a class="navbar-brand" href="{%url 'home'%}">Cyril Bou-Harb</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-              <a class="nav-link" href="#">Linkedin</a>
-              <a class="nav-link" href="#">Resume</a>
-              <a class="nav-link active" href="#">Blog</a>
+              <a class="nav-link" href="https://www.linkedin.com/in/cyril-bou-harb-9996a6279">Linkedin</a>
+              <a class="nav-link" href="{% static 'Bou-Harb Cyril.pdf' %}">Resume</a>
+              <a class="nav-link active" href="{%url 'allblogs'%}">Blog</a>
             </div>
           </div>
         </div>
@@ -180,9 +181,11 @@
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
             {%for blog in blogs.all%}
             <div class="col-lg-6 px-0">
-            <a href="#"><h3 class="display-10 fst-italic">{{blog.title}}</h3></a>
+            <a href="{% url 'detail' blog.id %}"><h3 class="display-10 fst-italic">{{blog.title}}</h3></a>
+            {{blog.pub_date_pretty}}
+            <br/>
             <img class="img-fluid" src="{{blog.image.url}}" height=200 width=200 />
-            <p class="lead my-3">{{blog.body}}</p>
+            <p class="lead my-3">{{blog.summary}}</p>
             </div>
             {%endfor%}
         </div>

@@ -1,10 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-
-
-  {% load static %}
-
-
+    {% load static %}
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
@@ -12,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
-    <title>Cyril Bou-Harb Blog</title>
+    <title>{{blog.title}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
@@ -168,7 +164,7 @@
             <div class="navbar-nav ms-auto">
               <a class="nav-link" href="https://www.linkedin.com/in/cyril-bou-harb-9996a6279">Linkedin</a>
               <a class="nav-link" href="{% static 'Bou-Harb Cyril.pdf' %}">Resume</a>
-              <a class="nav-link" href="{%url 'allblogs'%}">Blog</a>
+              <a class="nav-link active" href="{%url 'allblogs'%}">Blog</a>
             </div>
           </div>
         </div>
@@ -176,39 +172,18 @@
 </header>
 
 <main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi, I'm Cyril.</h1>
-        <p class="lead text-body-secondary">I'm learning how to make Django websites for my internship!</p>
-        <p>
-          <a href="mailto:cyrilobouharb@outlook.com" class="btn btn-primary my-2">Contact Me via Email</a>
-        </p>
-        <img src="{% static 'prom4.JPG'%}" width="300" height="300" />
-      </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-body-tertiary">
     <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-        {%for job in jobs.all%}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top"  src="{{job.image.url}}"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></img>
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
+        <h1 class="text-center pt-3">{{blog.title}}</h1>
+        <p class="text-center">{{blog.pub_date_pretty}} </p>
+        <img class="img-fluid" src="{{blog.image.url}}" width="100%" height="20%" />
+        <hr />
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+            <div class="col-lg-6 px-0">
+            <p class="lead my-3">{{blog.body}}</p>
             </div>
-          </div>
         </div>
-        {%endfor%}
-        
-      </div>
     </div>
-  </div>
+
 
 </main>
 
